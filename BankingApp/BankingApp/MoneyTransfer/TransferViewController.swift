@@ -149,7 +149,7 @@ class TransferViewController: UIViewController {
         
         let attributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 20)!]
         UINavigationBar.appearance().titleTextAttributes = attributes
-     
+        
         let backBarButton = UIBarButtonItem(title: "Перевод", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backBarButton
     }
@@ -227,15 +227,10 @@ class TransferViewController: UIViewController {
             if (summa > Constants.creditCardBalans) {
                 presentAlert(text: "Превышен лимит!", status: .wrong)
             }
-            
-            
         } else {
             presentAlert(text: "Введите корректную сумму", status: .wrong)
         }
-        
-        
     }
-    
     
     private func presentAlert(text: String, status: statusOperation) {
         switch status {
@@ -256,8 +251,6 @@ class TransferViewController: UIViewController {
                 self.navigationController?.popViewController(animated: true)
             }
         }
-        
-        
     }
     
 }

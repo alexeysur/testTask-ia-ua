@@ -8,7 +8,7 @@
 import UIKit
 
 class OperationHeader: UITableViewHeaderFooterView {
-
+    
     var title: TypeLabel = {
         let v = TypeLabel()
         v.textColor = .white
@@ -20,10 +20,10 @@ class OperationHeader: UITableViewHeaderFooterView {
         return v
     }()
     
-   required init?(coder aDecoder: NSCoder) {
-       super.init(coder: aDecoder)
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
-  
+    
     func setupViews() {
         self.backgroundColor = .black
         self.layer.borderColor = UIColor.black.cgColor
@@ -35,6 +35,6 @@ class OperationHeader: UITableViewHeaderFooterView {
             title.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             title.widthAnchor.constraint(equalToConstant: 100)
         ])
- 
+        
     }
 }

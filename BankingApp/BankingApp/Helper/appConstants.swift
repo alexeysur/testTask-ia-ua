@@ -24,10 +24,10 @@ struct DataOperation {
     let summa: String
     
     static let historyOperations: [DataOperation] = [
-    DataOperation(data: "2021-08-01", title: "Пополнение мобильного", summa: "100.0"),
-    DataOperation(data: "2021-08-02", title: "Перевод другу", summa: "200.0"),
-    DataOperation(data: "2021-08-03", title: "Оплата коммуналки", summa: "300.0"),
-    DataOperation(data: "2021-08-04", title: "Благотворительность", summa: "400.0")
-]
-
+        DataOperation(data: "2021-08-01", title: "Пополнение мобильного", summa: "100.0"),
+        DataOperation(data: "2021-08-02", title: "Перевод другу", summa: "200.0"),
+        DataOperation(data: "2021-08-03", title: "Оплата коммуналки", summa: "300.0"),
+        DataOperation(data: "2021-08-04", title: "Благотворительность", summa: "400.0")
+    ]
+    
 }

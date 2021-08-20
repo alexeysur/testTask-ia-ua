@@ -87,18 +87,14 @@ class MainViewController: UIViewController, UITableViewDelegate {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 5, right: 5)
-        
         button.titleLabel?.font = UIFont(name: "Rockwell-Bold", size: 20)
         button.setTitleColor(.black, for: .normal)
-        
         button.backgroundColor = .white
         button.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 5
-        
         button.setTitle(Constants.buttonOperationsText, for: .normal)
         button.addTarget(self, action: #selector(operationsButtonTap), for: .touchUpInside)
-        
         
         return button
     }()
@@ -117,13 +113,10 @@ class MainViewController: UIViewController, UITableViewDelegate {
         return tableView
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "darkGray")
-        
         transaction = DataOperation.historyOperations
-        
         setupNavigation()
         setupAppearance()
     }
@@ -132,6 +125,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
     }
+   
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .lightContent
     }
@@ -153,9 +147,8 @@ class MainViewController: UIViewController, UITableViewDelegate {
             
         ])
         
-        creditCardNumber.frame = CGRect.zero
+ //       creditCardNumber.frame = CGRect.zero
         creditCardView.addSubview(creditCardNumber)
-        
         NSLayoutConstraint.activate([
             creditCardNumber.centerXAnchor.constraint(equalTo: creditCardView.centerXAnchor),
             creditCardNumber.topAnchor.constraint(equalTo: creditCardView.topAnchor, constant: 20),
@@ -166,7 +159,6 @@ class MainViewController: UIViewController, UITableViewDelegate {
         ])
         
         view.addSubview(creditCardBalans)
-        
         NSLayoutConstraint.activate([
             creditCardBalans.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.frame.width / 7.5),
             creditCardBalans.topAnchor.constraint(equalTo: creditCardView.bottomAnchor, constant: 1),
@@ -227,7 +219,6 @@ class MainViewController: UIViewController, UITableViewDelegate {
         UINavigationBar.appearance().titleTextAttributes = attributes
         
     }
-    
     
     @objc private func operationsButtonTap() {
         let vc = TransferViewController()

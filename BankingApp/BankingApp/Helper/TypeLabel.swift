@@ -8,7 +8,7 @@
 import UIKit
 
 class TypeLabel: UILabel {
-
+    
     var topInset: CGFloat = 8.0
     var bottomInset: CGFloat = 3.0
     var leftInset: CGFloat = 3.0
@@ -24,5 +24,5 @@ class TypeLabel: UILabel {
         return CGSize(width: size.width + leftInset + rightInset,
                       height: size.height + topInset + bottomInset)
     }
-
+    
 }

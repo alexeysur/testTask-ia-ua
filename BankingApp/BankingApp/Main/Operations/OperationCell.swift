@@ -8,7 +8,7 @@
 import UIKit
 
 class OperationCell: UITableViewCell {
-
+    
     var dataOperation: TypeLabel = {
         let v = TypeLabel()
         v.textColor = .white
@@ -38,20 +38,20 @@ class OperationCell: UITableViewCell {
         return v
     }()
     
-   
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-     super.init(style: style, reuseIdentifier: reuseIdentifier)
-     }
-
-     required init?(coder aDecoder: NSCoder) {
-       super.init(coder: aDecoder)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     func setupViews() {
         self.backgroundColor = .black
         self.layer.borderColor = UIColor.black.cgColor
         self.layer.borderWidth = 1
-   
+        
         self.addSubview(dataOperation)
         self.addSubview(title)
         self.addSubview(summa)
