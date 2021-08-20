@@ -17,7 +17,7 @@ Mini-test task from company INFOCOM Ltd:
      <img src="https://github.com/alexeysur/testTask-ia-ua/blob/main/img/page1.jpg" width = "50%">
     </td>
     <td>
-    <img scr="https://github.com/alexeysur/testTask-ia-ua/blob/main/img/page2.jpg" width = "50%">
+    <img src="https://github.com/alexeysur/testTask-ia-ua/blob/main/img/page2.jpg" width = "50%">
     </td>
  </tr>   
 </table>
