@@ -14,10 +14,10 @@ Mini-test task from company INFOCOM Ltd:
 <table>
 <tr>
     <td>
-     <img src="https://github.com/alexeysur/testTask-ia-ua/blob/main/img/page1.jpg" width = "50%">
+     <img src="https://github.com/alexeysur/testTask-ia-ua/blob/main/img/page1.jpg">
     </td>
     <td>
-    <img src="https://github.com/alexeysur/testTask-ia-ua/blob/main/img/page2.jpg" width = "50%">
+    <img src="https://github.com/alexeysur/testTask-ia-ua/blob/main/img/page2.jpg">
     </td>
  </tr>   
 </table>
