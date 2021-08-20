@@ -38,7 +38,7 @@ class TransferViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isEnabled = false
         label.text = Constants.creditNumber
-      
+        
         label.font = UIFont(name: "Rockwell-Bold", size: 24)
         label.textAlignment = .center
         label.textColor = .black
@@ -48,7 +48,7 @@ class TransferViewController: UIViewController {
         label.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         label.layer.borderWidth = 1
         label.layer.cornerRadius = 5
-       
+        
         return label
     }()
     
@@ -84,7 +84,7 @@ class TransferViewController: UIViewController {
         field.font = UIFont(name: "Rockwell-Bold", size: 20)
         field.textAlignment = .center
         field.textColor = .black
-       
+        
         return field
     }()
     
@@ -108,7 +108,7 @@ class TransferViewController: UIViewController {
     }()
     
     private let viewBottomOnController: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(named: "separateLine")
         return view
@@ -137,8 +137,21 @@ class TransferViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "darkGray")
-       // view.backgroundColor = .white
+        setupNavigationStyle()
         setupAppearance()
+    }
+    
+    private func setupNavigationStyle() {
+        navigationController?.navigationBar.barTintColor = .black
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.tintColor = .white
+        
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 20)!]
+        UINavigationBar.appearance().titleTextAttributes = attributes
+     
+        let backBarButton = UIBarButtonItem(title: "Перевод", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backBarButton
     }
     
     private func setupAppearance() {
@@ -149,7 +162,7 @@ class TransferViewController: UIViewController {
             senderLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             senderLabel.heightAnchor.constraint(equalToConstant: 44)
         ])
-      
+        
         view.addSubview(numberCardSender)
         NSLayoutConstraint.activate([
             numberCardSender.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -176,14 +189,14 @@ class TransferViewController: UIViewController {
             numberCardReciever.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             numberCardReciever.heightAnchor.constraint(equalToConstant: 100)
         ])
-  
+        
         view.addSubview(summaTextField)
         NSLayoutConstraint.activate([
             summaTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             summaTextField.topAnchor.constraint(equalTo: numberCardReciever.bottomAnchor, constant: 20),
             summaTextField.heightAnchor.constraint(equalToConstant: 50),
             summaTextField.widthAnchor.constraint(equalToConstant: 100)
-           
+            
         ])
         
         view.addSubview(viewBottomOnController)
@@ -211,17 +224,20 @@ class TransferViewController: UIViewController {
             if (summa >= 1 && summa <= Constants.creditCardBalans) {
                 presentAlert(text: "Операция успешна", status: .success)
             }
+            if (summa > Constants.creditCardBalans) {
+                presentAlert(text: "Превышен лимит!", status: .wrong)
+            }
             
-       
+            
         } else {
             presentAlert(text: "Введите корректную сумму", status: .wrong)
         }
         
-     
+        
     }
     
     
-   private func presentAlert(text: String, status: statusOperation) {
+    private func presentAlert(text: String, status: statusOperation) {
         switch status {
         case .wrong:
             let alert = UIAlertController(title: "Error!", message: text, preferredStyle: .alert)
@@ -234,21 +250,14 @@ class TransferViewController: UIViewController {
             alert.addAction(refreshAction)
             present(alert, animated: true)
             
-          
             let when = DispatchTime.now() + 3
             DispatchQueue.main.asyncAfter(deadline: when){
-              alert.dismiss(animated: true, completion: nil)
-              self.navigationController?.popViewController(animated: true)
+                alert.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             }
         }
         
-      
-    }
-   
-    private func disMissVC(alert: UIAlertAction!) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.dismiss(animated: true, completion: nil)
-        }
+        
     }
     
 }

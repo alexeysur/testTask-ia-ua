@@ -8,14 +8,14 @@
 import UIKit
 
 class MainViewController: UIViewController, UITableViewDelegate {
-     
+    
     // MARK: - Variables
     var transaction = [DataOperation]()
     
     // MARK: - UI
     
     private let creditCardView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .yellow
         view.layer.cornerRadius = 10
@@ -69,14 +69,14 @@ class MainViewController: UIViewController, UITableViewDelegate {
     }()
     
     private let viewBottomOnController: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .black
         return view
     }()
     
     private let separateLineOnBottomView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(named: "separateLine")
         return view
@@ -106,8 +106,9 @@ class MainViewController: UIViewController, UITableViewDelegate {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: self.historyOperationsView.bounds)
         tableView.register(OperationCell.self, forCellReuseIdentifier: "ItemCell")
+        tableView.register(OperationHeader.self, forHeaderFooterViewReuseIdentifier: "CustomTableViewHeader")
         tableView.dataSource = self
- //       tableView.delegate = self
+        tableView.separatorStyle = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .white
         tableView.showsVerticalScrollIndicator = false
@@ -120,7 +121,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "darkGray")
-       
+        
         transaction = DataOperation.historyOperations
         
         setupNavigation()
@@ -147,14 +148,14 @@ class MainViewController: UIViewController, UITableViewDelegate {
             creditCardView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             creditCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             creditCardView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: widthCard),
-                                        creditCardView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -widthCard),
+            creditCardView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -widthCard),
             creditCardView.heightAnchor.constraint(equalToConstant: view.frame.height / 4)
             
         ])
         
         creditCardNumber.frame = CGRect.zero
         creditCardView.addSubview(creditCardNumber)
-      
+        
         NSLayoutConstraint.activate([
             creditCardNumber.centerXAnchor.constraint(equalTo: creditCardView.centerXAnchor),
             creditCardNumber.topAnchor.constraint(equalTo: creditCardView.topAnchor, constant: 20),
@@ -200,13 +201,11 @@ class MainViewController: UIViewController, UITableViewDelegate {
         
         view.addSubview(historyOperationsView)
         NSLayoutConstraint.activate([
-     //       historyOperationsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             historyOperationsView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             historyOperationsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             historyOperationsView.topAnchor.constraint(equalTo: creditCardBalans.bottomAnchor, constant: 10),
             
             historyOperationsView.bottomAnchor.constraint(equalTo: viewBottomOnController.topAnchor, constant: 0)
-   //         historyOperationsView.heightAnchor.constraint(equalToConstant: view.frame.height / 2 - 70)
         ])
         
         historyOperationsView.addSubview(tableView)
@@ -217,7 +216,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
             tableView.bottomAnchor.constraint(equalTo: historyOperationsView.bottomAnchor, constant: 0)
         ])
     }
-
+    
     private func setupNavigation() {
         self.navigationController?.navigationBar.barTintColor = UIColor(named: "darkGray")
         self.navigationController?.navigationBar.isTranslucent = false
@@ -226,7 +225,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
         self.title = "Главная"
         let attributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 20)!]
         UINavigationBar.appearance().titleTextAttributes = attributes
-  
+        
     }
     
     
