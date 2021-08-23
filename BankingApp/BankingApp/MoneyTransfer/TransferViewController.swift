@@ -13,7 +13,7 @@ enum statusOperation {
     
 }
 
-class TransferViewController: UIViewController {
+class TransferViewController: UIViewController, UITextFieldDelegate {
     
     private let senderLabel: UILabel = {
         let label = UILabel()
@@ -70,8 +70,8 @@ class TransferViewController: UIViewController {
         return label
     }()
     
-    private let numberCardReciever: UITextField = {
-        let field = UITextField()
+    private let numberCardReciever: CreditCardTextField = {
+        let field = CreditCardTextField()
         field.translatesAutoresizingMaskIntoConstraints = false
         field.placeholder = "Номер карты получателя"
         field.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
@@ -80,10 +80,13 @@ class TransferViewController: UIViewController {
         field.clipsToBounds = true
         field.backgroundColor = .white
         field.keyboardType = .numberPad
-        
+        field.mininumCountOfChar = 16
+        field.setLeftPaddingPoints(10)
         field.font = UIFont(name: "Rockwell-Bold", size: 20)
-        field.textAlignment = .center
+        field.textAlignment = .left
         field.textColor = .black
+        field.layer.masksToBounds = true
+        field.errorColor = .red
         
         return field
     }()
@@ -98,11 +101,12 @@ class TransferViewController: UIViewController {
         field.clipsToBounds = true
         field.backgroundColor = .white
         field.keyboardType = .numberPad
-        
-        field.font = UIFont(name: "Rockwell-Bold", size: 24)
+        field.setLeftPaddingPoints(10)
+        field.font = UIFont.boldSystemFont(ofSize: 24)
         field.textAlignment = .left
         field.textColor = .black
-        
+        field.layer.masksToBounds = true
+ 
         
         return field
     }()
@@ -117,9 +121,9 @@ class TransferViewController: UIViewController {
     private let buttonSend: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 5, right: 5)
+        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         
-        button.titleLabel?.font = UIFont(name: "Rockwell-Bold", size: 20)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.setTitleColor(.black, for: .normal)
         
         button.backgroundColor = .white
@@ -139,6 +143,19 @@ class TransferViewController: UIViewController {
         view.backgroundColor = UIColor(named: "darkGray")
         setupNavigationStyle()
         setupAppearance()
+        numberCardReciever.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(sender: NSNotification) {
+         self.view.frame.origin.y = -150 
+    }
+
+    @objc func keyboardWillHide(sender: NSNotification) {
+         self.view.frame.origin.y = 0
     }
     
     private func setupNavigationStyle() {

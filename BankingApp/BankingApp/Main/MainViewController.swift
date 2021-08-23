@@ -86,8 +86,9 @@ class MainViewController: UIViewController, UITableViewDelegate {
     private let buttonOperations: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 5, right: 5)
-        button.titleLabel?.font = UIFont(name: "Rockwell-Bold", size: 20)
+        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 5, bottom: 5, right: 5)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        button.titleLabel?.textAlignment = .center
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .white
         button.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
@@ -95,10 +96,12 @@ class MainViewController: UIViewController, UITableViewDelegate {
         button.layer.cornerRadius = 5
         button.setTitle(Constants.buttonOperationsText, for: .normal)
         button.addTarget(self, action: #selector(operationsButtonTap), for: .touchUpInside)
-        
+
         return button
-    }()
     
+    }()
+         
+  
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: self.historyOperationsView.bounds)
         tableView.register(OperationCell.self, forCellReuseIdentifier: "ItemCell")
@@ -132,8 +135,6 @@ class MainViewController: UIViewController, UITableViewDelegate {
     
     
     private func setupAppearance() {
-        
-        creditCardView.frame = CGRect.zero
         view.addSubview(creditCardView)
         
         let widthCard = view.frame.width / 5
@@ -189,6 +190,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
             buttonOperations.centerXAnchor.constraint(equalTo: separateLineOnBottomView.centerXAnchor),
             buttonOperations.topAnchor.constraint(equalTo: separateLineOnBottomView.bottomAnchor),
             buttonOperations.heightAnchor.constraint(equalToConstant: 44)
+
         ])
         
         view.addSubview(historyOperationsView)

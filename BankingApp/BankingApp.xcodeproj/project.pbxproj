@@ -17,6 +17,8 @@
 		8A90C7D926CD7EB700FCC84A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A90C7D726CD7EB700FCC84A /* LaunchScreen.storyboard */; };
 		8A90C7E426CD840500FCC84A /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A90C7E326CD840500FCC84A /* TransferViewController.swift */; };
 		8A90C7E726CD918500FCC84A /* appConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A90C7E626CD918500FCC84A /* appConstants.swift */; };
+		8A93CB0826D03F3C00FFD300 /* CreditCardTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93CB0726D03F3C00FFD300 /* CreditCardTextField.swift */; };
+		8A93CB0B26D0470900FFD300 /* Ext+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93CB0A26D0470900FFD300 /* Ext+UITextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		8A90C7DA26CD7EB700FCC84A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A90C7E326CD840500FCC84A /* TransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
 		8A90C7E626CD918500FCC84A /* appConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appConstants.swift; sourceTree = "<group>"; };
+		8A93CB0726D03F3C00FFD300 /* CreditCardTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardTextField.swift; sourceTree = "<group>"; };
+		8A93CB0A26D0470900FFD300 /* Ext+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UITextField.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,7 @@
 		8A90C7CB26CD7EB400FCC84A /* BankingApp */ = {
 			isa = PBXGroup;
 			children = (
+				8A93CB0926D046EA00FFD300 /* Extensions */,
 				8A90C7E526CD916E00FCC84A /* Helper */,
 				8A90C7E126CD83BF00FCC84A /* App */,
 				8A90C7E226CD83C300FCC84A /* Main */,
@@ -115,8 +120,17 @@
 			children = (
 				8A90C7E626CD918500FCC84A /* appConstants.swift */,
 				8A86B51826CECD8500E0699B /* TypeLabel.swift */,
+				8A93CB0726D03F3C00FFD300 /* CreditCardTextField.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		8A93CB0926D046EA00FFD300 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8A93CB0A26D0470900FFD300 /* Ext+UITextField.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,10 +202,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A93CB0826D03F3C00FFD300 /* CreditCardTextField.swift in Sources */,
 				8A90C7D126CD7EB400FCC84A /* MainViewController.swift in Sources */,
 				8A86B51E26CED26F00E0699B /* MainViewController+TableViewDataSource.swift in Sources */,
 				8A86B52026CED89600E0699B /* OperationHeader.swift in Sources */,
 				8A86B51926CECD8500E0699B /* TypeLabel.swift in Sources */,
+				8A93CB0B26D0470900FFD300 /* Ext+UITextField.swift in Sources */,
 				8A90C7E426CD840500FCC84A /* TransferViewController.swift in Sources */,
 				8A86B51C26CED16A00E0699B /* OperationCell.swift in Sources */,
 				8A90C7E726CD918500FCC84A /* appConstants.swift in Sources */,
