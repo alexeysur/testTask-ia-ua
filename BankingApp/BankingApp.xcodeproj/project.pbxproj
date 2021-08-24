@@ -10,7 +10,6 @@
 		8A86B51926CECD8500E0699B /* TypeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86B51826CECD8500E0699B /* TypeLabel.swift */; };
 		8A86B51C26CED16A00E0699B /* OperationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86B51B26CED16A00E0699B /* OperationCell.swift */; };
 		8A86B51E26CED26F00E0699B /* MainViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86B51D26CED26F00E0699B /* MainViewController+TableViewDataSource.swift */; };
-		8A86B52026CED89600E0699B /* OperationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86B51F26CED89600E0699B /* OperationHeader.swift */; };
 		8A90C7CD26CD7EB400FCC84A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A90C7CC26CD7EB400FCC84A /* AppDelegate.swift */; };
 		8A90C7D126CD7EB400FCC84A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A90C7D026CD7EB400FCC84A /* MainViewController.swift */; };
 		8A90C7D626CD7EB700FCC84A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A90C7D526CD7EB700FCC84A /* Assets.xcassets */; };
@@ -25,7 +24,6 @@
 		8A86B51826CECD8500E0699B /* TypeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeLabel.swift; sourceTree = "<group>"; };
 		8A86B51B26CED16A00E0699B /* OperationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationCell.swift; sourceTree = "<group>"; };
 		8A86B51D26CED26F00E0699B /* MainViewController+TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+TableViewDataSource.swift"; sourceTree = "<group>"; };
-		8A86B51F26CED89600E0699B /* OperationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationHeader.swift; sourceTree = "<group>"; };
 		8A90C7C926CD7EB400FCC84A /* BankingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A90C7CC26CD7EB400FCC84A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A90C7D026CD7EB400FCC84A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -53,7 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				8A86B51B26CED16A00E0699B /* OperationCell.swift */,
-				8A86B51F26CED89600E0699B /* OperationHeader.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -77,9 +74,9 @@
 		8A90C7CB26CD7EB400FCC84A /* BankingApp */ = {
 			isa = PBXGroup;
 			children = (
+				8A90C7E126CD83BF00FCC84A /* App */,
 				8A93CB0926D046EA00FFD300 /* Extensions */,
 				8A90C7E526CD916E00FCC84A /* Helper */,
-				8A90C7E126CD83BF00FCC84A /* App */,
 				8A90C7E226CD83C300FCC84A /* Main */,
 				8A90C7E026CD83AA00FCC84A /* MoneyTransfer */,
 				8A90C7D526CD7EB700FCC84A /* Assets.xcassets */,
@@ -205,7 +202,6 @@
 				8A93CB0826D03F3C00FFD300 /* CreditCardTextField.swift in Sources */,
 				8A90C7D126CD7EB400FCC84A /* MainViewController.swift in Sources */,
 				8A86B51E26CED26F00E0699B /* MainViewController+TableViewDataSource.swift in Sources */,
-				8A86B52026CED89600E0699B /* OperationHeader.swift in Sources */,
 				8A86B51926CECD8500E0699B /* TypeLabel.swift in Sources */,
 				8A93CB0B26D0470900FFD300 /* Ext+UITextField.swift in Sources */,
 				8A90C7E426CD840500FCC84A /* TransferViewController.swift in Sources */,

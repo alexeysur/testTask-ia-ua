@@ -13,7 +13,7 @@ enum statusOperation {
     
 }
 
-class TransferViewController: UIViewController, UITextFieldDelegate {
+class TransferViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
     
     private let senderLabel: UILabel = {
         let label = UILabel()
@@ -87,6 +87,7 @@ class TransferViewController: UIViewController, UITextFieldDelegate {
         field.textColor = .black
         field.layer.masksToBounds = true
         field.errorColor = .red
+        field.addDoneCancelToolbar()
         
         return field
     }()
@@ -100,13 +101,13 @@ class TransferViewController: UIViewController, UITextFieldDelegate {
         field.layer.cornerRadius = 5
         field.clipsToBounds = true
         field.backgroundColor = .white
-        field.keyboardType = .numberPad
+        field.keyboardType = .decimalPad
         field.setLeftPaddingPoints(10)
         field.font = UIFont.boldSystemFont(ofSize: 24)
         field.textAlignment = .left
         field.textColor = .black
-        field.layer.masksToBounds = true
- 
+       field.layer.masksToBounds = true
+       field.addDoneCancelToolbar()
         
         return field
     }()
@@ -151,7 +152,7 @@ class TransferViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardWillShow(sender: NSNotification) {
-         self.view.frame.origin.y = -150 
+         self.view.frame.origin.y = -195
     }
 
     @objc func keyboardWillHide(sender: NSNotification) {
@@ -163,12 +164,11 @@ class TransferViewController: UIViewController, UITextFieldDelegate {
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         navigationController?.navigationBar.tintColor = .white
-        
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 20)!]
-        UINavigationBar.appearance().titleTextAttributes = attributes
-        
+
         let backBarButton = UIBarButtonItem(title: "Перевод", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backBarButton
+        
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     private func setupAppearance() {
@@ -235,10 +235,10 @@ class TransferViewController: UIViewController, UITextFieldDelegate {
     @objc func sendMoneyTapped() {
         
         if let summa = Double(summaTextField.text!) {
-            if (summa < 1) {
-                presentAlert(text: "Сумма перевода не может быть меньше 1.", status: .wrong)
+            if (summa <= 1) {
+                presentAlert(text: "Сумма перевода должна быть больше 1.", status: .wrong)
             }
-            if (summa >= 1 && summa <= Constants.creditCardBalans) {
+            if (summa > 1 && summa <= Constants.creditCardBalans) {
                 presentAlert(text: "Операция успешна", status: .success)
             }
             if (summa > Constants.creditCardBalans) {

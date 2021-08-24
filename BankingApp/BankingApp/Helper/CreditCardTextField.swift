@@ -43,7 +43,6 @@ class CreditCardTextField: UITextField {
         
         if text.count <= minChars + (minChars / 4) - 1 {
             errorMessage = "The credit card must have " + String(minChars) + " digits"
-            print(errorMessage!)
         } else {
             errorMessage = nil
             textField.text = previousTextFieldContent

@@ -105,8 +105,8 @@ class MainViewController: UIViewController, UITableViewDelegate {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: self.historyOperationsView.bounds)
         tableView.register(OperationCell.self, forCellReuseIdentifier: "ItemCell")
-        tableView.register(OperationHeader.self, forHeaderFooterViewReuseIdentifier: "CustomTableViewHeader")
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .white
@@ -120,17 +120,17 @@ class MainViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "darkGray")
         transaction = DataOperation.historyOperations
-        setupNavigation()
         setupAppearance()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
+        setupNavigation()
     }
    
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
+        return .lightContent
     }
     
     
@@ -148,13 +148,12 @@ class MainViewController: UIViewController, UITableViewDelegate {
             
         ])
         
- //       creditCardNumber.frame = CGRect.zero
         creditCardView.addSubview(creditCardNumber)
         NSLayoutConstraint.activate([
             creditCardNumber.centerXAnchor.constraint(equalTo: creditCardView.centerXAnchor),
             creditCardNumber.topAnchor.constraint(equalTo: creditCardView.topAnchor, constant: 20),
             creditCardNumber.leadingAnchor.constraint(equalTo: creditCardView.leadingAnchor, constant: 10),
-            creditCardNumber.trailingAnchor.constraint(equalTo: creditCardNumber.trailingAnchor, constant: 10),
+            creditCardNumber.trailingAnchor.constraint(equalTo: creditCardNumber.trailingAnchor, constant: 0),
             creditCardNumber.heightAnchor.constraint(equalToConstant: 40)
             
         ])
@@ -212,14 +211,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
     }
     
     private func setupNavigation() {
-        self.navigationController?.navigationBar.barTintColor = UIColor(named: "darkGray")
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        self.navigationController?.navigationBar.tintColor = .white
-        self.title = "Главная"
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 20)!]
-        UINavigationBar.appearance().titleTextAttributes = attributes
-        
+        navigationItem.title = "Главная"
     }
     
     @objc private func operationsButtonTap() {

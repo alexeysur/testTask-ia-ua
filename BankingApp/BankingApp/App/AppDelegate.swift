@@ -18,7 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         self.viewController = MainViewController()
         let navigationController = UINavigationController(rootViewController: viewController!)
-       
+        navigationController.navigationBar.isTranslucent = false
+        navigationController.navigationBar.barTintColor = UIColor(named: "darkGray")
+        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white,
+                                                                  .font: UIFont(name: "HelveticaNeue-Bold", size: 24)!
+        ]
+     
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         

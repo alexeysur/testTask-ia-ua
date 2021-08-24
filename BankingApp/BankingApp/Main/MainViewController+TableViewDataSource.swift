@@ -21,6 +21,8 @@ extension MainViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as? OperationCell else {
             return UITableViewCell()
         }
+        cell.selectionStyle = .none
+        
         cell.setupViews()
         cell.dataOperation.text = transaction[indexPath.row].data
         cell.title.text = transaction[indexPath.row].title
@@ -48,12 +50,29 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CustomTableViewHeader") as? OperationHeader else {
-            return UITableViewHeaderFooterView()
-        }
-        let backgroundView = UIView(frame: headerView.bounds)
-        backgroundView.backgroundColor = .black
-        headerView.backgroundView = backgroundView
+        let headerView = UIView()
+        headerView.backgroundColor = .black
+      
+        let historyLabel = TypeLabel()
+        historyLabel.textColor = .black
+        historyLabel.backgroundColor = .white
+        historyLabel.text = Constants.tableViewHeaderText
+   
+        historyLabel.textAlignment = .center
+        historyLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        historyLabel.lineBreakMode = .byTruncatingTail
+        historyLabel.translatesAutoresizingMaskIntoConstraints = false
+        historyLabel.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        historyLabel.layer.borderWidth = 1
+        historyLabel.layer.cornerRadius = 5
+        historyLabel.clipsToBounds = true
+       
+        headerView.addSubview(historyLabel)
+        NSLayoutConstraint.activate([
+            historyLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+            historyLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+            historyLabel.widthAnchor.constraint(equalToConstant: 100)
+        ])
         
         return headerView
     }
@@ -62,7 +81,4 @@ extension MainViewController: UITableViewDataSource {
         return 44
     }
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Constants.tableViewHeaderText
-    }
 }
